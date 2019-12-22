@@ -55,16 +55,13 @@ Once regularization was applied to Model 5, the RMSE value dropped considerably 
 $$Equation\ 5: Rating(u,i,g) = mu + b_i + b_u +g_u$$  With $b_i$ as defined in Equation , $b_u$ as defined in Equation , and $g_u$ as defined in Equation .  When this algorithm  was then used on the validation set the final RMSE of 0.85772 was achieved. 
 
 ## Conclusion
-This method of using regularization for predicting movie ratings proved quite proficient, as the final RMSE was below the target by 0.00718.  A major concern is the high variability between the predicted rating and expected rating in user-genre groups with a small number of ratings in them.  This is shown in Figure 2 and Figure 3 below.   This is due to how specific the genres are.  A movie can only be used to predict the genre effect in movies with all of the same movie tags, which can be rather specific since a movie can have many tags.  Many users only rate a single movie in a genre group.  The more ratings in a user-genre group, the more reliable the $g_u$ value is and therefore, generally, the lower the residual is.  The first fifteen groups are shown in Table 2 below.  Notice also that the groups defined by more ratings generally have fewer ratings and therefore contribute less to the overall RMSE. Recognizing correlations between movies with some but not all of the same genre tags would be a logical next step in improving this algorithm.
+This method of using regularization for predicting movie ratings proved quite proficient, as the final RMSE was below the target by 0.00718.  A major concern is the high variability between the predicted rating and expected rating in user-genre groups with a small number of ratings in them.  This is shown in Figure 2 below.   This is due to how specific the genres are.  A movie can only be used to predict the genre effect in movies with all of the same movie tags, which can be rather specific since a movie can have many tags.  Many users only rate a single movie in a genre group.  The more ratings in a user-genre group, the more reliable the $g_u$ value is and therefore, generally, the lower the residual is.  The first fifteen groups are shown in Table 2 below.  Notice also that the groups defined by more ratings generally have fewer ratings and therefore contribute less to the overall RMSE. Recognizing correlations between movies with some but not all of the same genre tags would be a logical next step in improving this algorithm.
 
-```{r scatter, echo=FALSE, fig.width= 4.5, fig.height= 4, fig.cap= "Scatter plot of relationship between size of user-genre group and mean residual", fig.pos = "H"}
-g_u_valid_plot
-
-```
 
 ```{r line, echo=FALSE, fig.width=4.5, fig.height=4, fig.cap="Line graph of relationship between size of user-genre group and mean residual for groups defined by less than 30 ratings", fig.pos = "H"}
 g_u_pred_valid_1_plot
 ```
+
 
 ```{R User_group_table, echo = FALSE}
 kable(g_u_pred_valid_1_table, caption = "Mean residual and size of different user-genre groups for first 15 groups")

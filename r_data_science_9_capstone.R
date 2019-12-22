@@ -354,12 +354,16 @@ RMSE_final-.8649
 
 # Analysis of residuals in validation set predictions
 # First, plot the mean residual vs number of ratings
+''' This plot is nice, but too large to include in the report
 g_u_valid_plot = g_u_pred_valid %>% group_by(userId, genres) %>% 
-  summarize(n = n(),mean_g_u = mean(g_u), mean_res = mean(res)) %>%
+  summarize(n = n(),mean_g_u = mean(g_u), mean_res = mean(res))
   ggplot(aes(n, mean_res)) + geom_point() + xlab("Number of Ratings") + ylab("Mean Residual") +
   ggtitle("Mean Residual vs Number of Ratings Defining User-Genre Groups")+
   theme(plot.title = element_text(hjust = 0.5, size = 10))
 g_u_valid_plot
+'''
+
+
 
 # Now I will plot the mean residual as a function of number of ratings in the genre-user group.
 # 'n' is the number of ratings in that user-genre group
@@ -391,4 +395,3 @@ setwd("Desktop/R_Data_Science_Course")
 render("r_data_science_9_capstone_writeup.Rmd", output_format = "pdf_document")
 
 
-setwd("Desktop/R_Data_Science_Course")
